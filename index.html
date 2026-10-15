@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta property="og:title" content="Rashmi Rawat · Senior Java Developer">
+<meta property="og:description" content="Spring Boot, microservices, REST APIs and performance optimization.">
+<style>html{color-scheme:light dark}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Rashmi Rawat</title>
+<meta name="description" content="Rashmi Rawat, Senior Java Backend Developer: Spring Boot, microservices, REST APIs and performance optimization.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a service "spec sheet" — hero as an API response, then career as a dated log, work as case files, skills as a dependency manifest */
+:root{
+  --paper:#F2F4F7; --surface:#FFFFFF; --ink:#131C2E; --muted:#56627A; --line:#D7DCE5;
+  --cobalt:#2448C9; --cobalt-soft:#E3E9FB; --signal:#B86E00; --ok:#1E7A4F;
+  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body:"IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0E1320; --surface:#161D2E; --ink:#E6EAF2; --muted:#9AA5BB; --line:#283149;
+  --cobalt:#8EA8FF; --cobalt-soft:#1C2747; --signal:#F0B04A; --ok:#5CCB93; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0E1320; --surface:#161D2E; --ink:#E6EAF2; --muted:#9AA5BB; --line:#283149;
+  --cobalt:#8EA8FF; --cobalt-soft:#1C2747; --signal:#F0B04A; --ok:#5CCB93; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));}
+.wrap{max-width:1040px;margin:0 auto}
+a{color:var(--cobalt);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--cobalt);outline-offset:3px;border-radius:4px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.1}
+.label{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+/* nav */
+nav{position:sticky;top:env(safe-area-inset-top, 0px);z-index:5;background:color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--line);margin:0 calc(-1 * max(16px, env(safe-area-inset-left, 0px)))}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:12px max(16px, env(safe-area-inset-left, 0px))}
+nav .mark{font-family:var(--mono);font-size:14px;font-weight:500;color:var(--ink);text-decoration:none}
+nav ul{display:flex;gap:20px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+nav ul a{color:var(--muted);text-decoration:none;font-size:14px}
+nav ul a:hover{color:var(--cobalt)}
+@media (max-width:640px){nav ul{display:none}}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:48px;align-items:center;padding-block:64px 56px}
+.hero > *{min-width:0}
+.hero h1{font-size:clamp(44px,7vw,80px);font-weight:800;letter-spacing:-.02em}
+.hero .role{font-family:var(--display);font-weight:500;font-size:clamp(20px,2.4vw,26px);color:var(--cobalt);margin-top:12px}
+.hero p.lede{max-width:56ch;color:var(--muted);margin:20px 0 28px;font-size:17px}
+.status{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:13px;color:var(--ok);margin-bottom:20px}
+.status::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px color-mix(in srgb, var(--ok) 20%, transparent)}
+.actions{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:8px;font:500 15px var(--body);text-decoration:none;border:1px solid var(--line);color:var(--ink);background:var(--surface);cursor:pointer}
+.btn.primary{background:var(--cobalt);border-color:var(--cobalt);color:var(--surface)}
+.btn:hover{border-color:var(--cobalt)}
+
+/* api response card */
+.response{background:var(--surface);border:1px solid var(--line);border-radius:12px;font-family:var(--mono);font-size:13px;line-height:1.75;overflow:hidden}
+.response header{display:flex;justify-content:space-between;gap:12px;padding:10px 16px;border-bottom:1px solid var(--line);color:var(--muted);flex-wrap:wrap}
+.response header b{color:var(--ok);font-weight:500}
+.response pre{margin:0;padding:16px;overflow-x:auto;white-space:pre;color:var(--ink)}
+.k{color:var(--cobalt)} .s{color:var(--ok)} .n{color:var(--signal)}
+
+/* metrics */
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);border-block:1px solid var(--line)}
+.metric{padding:24px 20px;border-left:1px solid var(--line)}
+.metric:first-child{border-left:0}
+.metric strong{display:block;font-family:var(--display);font-size:clamp(30px,4vw,42px);font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1}
+.metric span{display:block;color:var(--muted);font-size:14px;margin-top:8px}
+@media (max-width:760px){.metrics{grid-template-columns:repeat(2,1fr)}.metric:nth-child(3){border-left:0}.metric:nth-child(n+3){border-top:1px solid var(--line)}}
+
+section{padding-block:72px 8px}
+.sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:32px;flex-wrap:wrap}
+.sec-head h2{font-size:clamp(28px,3.6vw,38px);font-weight:700}
+
+/* experience log */
+.log{display:grid;gap:0}
+.entry{display:grid;grid-template-columns:200px 1fr;gap:32px;padding-block:28px;border-top:1px solid var(--line)}
+.entry > *{min-width:0}
+.entry .when{font-family:var(--mono);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.entry .when .now{display:inline-block;margin-top:6px;color:var(--ok)}
+.entry h3{font-size:22px;font-weight:700}
+.entry .co{color:var(--cobalt);font-weight:500;margin:4px 0 12px}
+.entry ul{margin:0;padding-left:18px;display:grid;gap:8px;max-width:72ch}
+.entry li::marker{color:var(--muted)}
+.num{font-family:var(--mono);font-size:.92em;color:var(--signal);font-weight:500;white-space:nowrap}
+@media (max-width:700px){.entry{grid-template-columns:1fr;gap:8px}}
+
+/* case files */
+.cases{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.case{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.case .label{color:var(--cobalt)}
+.case h3{font-size:21px;font-weight:700}
+.case p{margin:0;color:var(--muted)}
+.result{margin-top:auto;padding-top:14px;border-top:1px dashed var(--line);font-family:var(--mono);font-size:13px;color:var(--ink);display:grid;gap:4px}
+.result div::before{content:"→ ";color:var(--ok)}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-family:var(--mono);font-size:12px;padding:3px 8px;border-radius:5px;background:var(--cobalt-soft);color:var(--cobalt)}
+@media (max-width:760px){.cases{grid-template-columns:1fr}}
+
+/* manifest */
+.manifest{display:grid;grid-template-columns:repeat(2,1fr);gap:0 40px}
+.group{padding-block:18px;border-top:1px solid var(--line);display:grid;grid-template-columns:150px 1fr;gap:16px;min-width:0}
+.group h3{font-family:var(--mono);font-size:13px;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-top:4px}
+@media (max-width:820px){.manifest{grid-template-columns:1fr}}
+@media (max-width:480px){.group{grid-template-columns:1fr;gap:8px}}
+
+/* credentials */
+.creds{display:grid;grid-template-columns:1.2fr 1fr;gap:20px}
+.creds > div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:24px;min-width:0}
+.creds h3{font-size:20px;margin-bottom:6px}
+.creds ul{margin:12px 0 0;padding:0;list-style:none;display:grid;gap:10px}
+.creds li{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line);padding-bottom:10px}
+.creds li:last-child{border-bottom:0;padding-bottom:0}
+.creds li span:last-child{font-family:var(--mono);font-size:13px;color:var(--muted)}
+@media (max-width:760px){.creds{grid-template-columns:1fr}}
+
+/* contact */
+.contact{margin-block:80px 40px;background:var(--ink);color:var(--paper);border-radius:16px;padding:48px clamp(20px,5vw,56px);display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:center}
+.contact > *{min-width:0}
+.contact h2{font-size:clamp(28px,4vw,42px);font-weight:800}
+.contact p{color:color-mix(in srgb, var(--paper) 75%, transparent);margin:12px 0 0;max-width:46ch}
+.lines{display:grid;gap:10px}
+.line-item{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border:1px solid color-mix(in srgb, var(--paper) 22%, transparent);border-radius:8px;font-family:var(--mono);font-size:14px}
+.line-item span,.line-item a{overflow-wrap:anywhere;color:var(--paper)}
+.copy{background:transparent;border:1px solid color-mix(in srgb, var(--paper) 35%, transparent);color:var(--paper);border-radius:6px;padding:4px 10px;font:500 12px var(--mono);cursor:pointer;flex:none}
+.copy:hover{background:color-mix(in srgb, var(--paper) 12%, transparent)}
+@media (max-width:760px){.contact{grid-template-columns:1fr}}
+footer{padding-block:0 40px;color:var(--muted);font-size:13px;font-family:var(--mono);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+@media (max-width:860px){.hero{grid-template-columns:1fr;gap:36px;padding-block:44px 40px}}
+@media (prefers-reduced-motion:no-preference){
+  .hero > div:first-child{animation:rise .6s ease-out both}
+  .response{animation:rise .6s .15s ease-out both}
+  @keyframes rise{from{transform:translateY(10px)}to{transform:none}}
+}
+</style>
+</head>
+<body>
+
+<nav aria-label="Sections">
+  <div class="wrap">
+    <a class="mark" href="#top">rashmi.rawat</a>
+    <ul>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="wrap" id="top">
+  <header class="hero">
+    <div>
+      <div class="status">Open to Senior Java Backend roles</div>
+      <h1>Rashmi Rawat</h1>
+      <div class="role">Senior Java Developer · Spring Boot &amp; Microservices</div>
+      <p class="lede">I build backend services that enterprises depend on every day: order processing, workflow orchestration, messaging and notifications. I care about clean design, measurable performance and code that is easy to test. Four years of production Java, currently at Bharti Airtel.</p>
+      <div class="actions">
+        <a class="btn primary" href="#contact">Get in touch</a>
+        <a class="btn" href="https://www.linkedin.com/in/rashmi-rawat-2155611a5/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a class="btn" href="https://leetcode.com/u/Rashmi_Rawat/" target="_blank" rel="noopener">LeetCode ↗</a>
+      </div>
+    </div>
+
+    <div class="response" aria-label="Profile summary formatted as an API response">
+      <header><span>GET /api/v1/engineers/rashmi</span><b>200 OK · 42 ms</b></header>
+<pre>{
+  <span class="k">"role"</span>: <span class="s">"Senior Software Engineer"</span>,
+  <span class="k">"company"</span>: <span class="s">"Bharti Airtel"</span>,
+  <span class="k">"experience_years"</span>: <span class="n">4+</span>,
+  <span class="k">"stack"</span>: [<span class="s">"Java"</span>, <span class="s">"Spring Boot"</span>,
+            <span class="s">"PostgreSQL"</span>, <span class="s">"Kafka"</span>, <span class="s">"Redis"</span>],
+  <span class="k">"tenants_served"</span>: <span class="n">50</span>,
+  <span class="k">"uptime"</span>: <span class="s">"99.9%"</span>,
+  <span class="k">"p95_latency_ms"</span>: { <span class="k">"before"</span>: <span class="n">800</span>, <span class="k">"after"</span>: <span class="n">600</span> },
+  <span class="k">"open_to_work"</span>: <span class="n">true</span>
+}</pre>
+    </div>
+  </header>
+
+  <div class="metrics" aria-label="Key results">
+    <div class="metric"><strong>50+</strong><span>enterprise tenants on services I build, at 99.9% uptime</span></div>
+    <div class="metric"><strong>−25%</strong><span>p95 API latency, ~800 ms down to ~600 ms</span></div>
+    <div class="metric"><strong>0</strong><span>data lost in the Oracle RAC → PostgreSQL migration</span></div>
+    <div class="metric"><strong>100K+</strong><span>notifications a month through a service I helped build</span></div>
+  </div>
+
+  <section id="experience">
+    <div class="sec-head"><span class="label">Career log</span><h2>Experience</h2></div>
+    <div class="log">
+      <article class="entry">
+        <div class="when">Mar 2025 – Present<br><span class="now">● current</span></div>
+        <div>
+          <h3>Senior Software Engineer</h3>
+          <div class="co">Bharti Airtel · Workforce Management platform</div>
+          <ul>
+            <li>Build Java/Spring Boot microservices for tenant onboarding, order processing and configurable workflow execution, serving <span class="num">50+</span> enterprise tenants at <span class="num">99.9%</span> uptime.</li>
+            <li>Built REST APIs for order processing with validation, metadata enrichment from external APIs and dynamic task creation. Manual order handling fell <span class="num">30%</span> and order turnaround <span class="num">20%</span>.</li>
+            <li>Designed a configurable workflow orchestration engine with GoF patterns. It is reused across <span class="num">4+</span> product lines and cut new-workflow setup time by <span class="num">60%</span>.</li>
+            <li>Drove the Oracle RAC to PostgreSQL production migration, refactoring <span class="num">100+</span> SQL queries with zero data loss and no customer-facing downtime.</li>
+            <li>Cut p95 latency by <span class="num">25%</span> and raised throughput by <span class="num">20%</span> (~250 to ~300 req/s) through SQL and index tuning, Redis caching, Kafka/RabbitMQ consumer tuning and connection pooling.</li>
+            <li>Raised unit test coverage to <span class="num">80%+</span> with JUnit, Mockito and SonarQube gates, cutting production defects by <span class="num">30%</span>. Use Cursor and GitHub Copilot to ship about <span class="num">30%</span> faster.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="entry">
+        <div class="when">Aug 2023 – Mar 2025</div>
+        <div>
+          <h3>Software Engineer</h3>
+          <div class="co">Innodeed Systems · Enterprise messaging platform</div>
+          <ul>
+            <li>Built backend services for customer conversations, agent assignment, chat history and discarded-chat tracking on a platform handling <span class="num">10K+</span> conversations a day.</li>
+            <li>Optimized agent assignment and chat-history queries with indexing and pagination. Customer wait time fell <span class="num">15%</span> and history load time <span class="num">30%</span> (~1.5 s to ~1 s).</li>
+            <li>Co-designed provider and template configuration modules for multi-channel chat, cutting new channel and client onboarding effort by <span class="num">40%</span>.</li>
+            <li>Set up Grafana dashboards for service health, reducing incident investigation time (MTTR) by <span class="num">40%</span>.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="entry">
+        <div class="when">Jul 2022 – Jul 2023</div>
+        <div>
+          <h3>Software Engineer</h3>
+          <div class="co">IoT83 · Platform services</div>
+          <ul>
+            <li>Contributed to an enterprise Notification Service adopted by <span class="num">5+</span> internal products, integrating Twilio and SMS/email templates behind REST endpoints. It delivers <span class="num">100K+</span> notifications a month at <span class="num">98%+</span> success.</li>
+            <li>Secured service-to-service communication with Consul, HashiCorp Vault and Keycloak (OAuth2/OIDC, JWT), removing <span class="num">100%</span> of hard-coded credentials.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="entry">
+        <div class="when">Nov 2021 – Jun 2022</div>
+        <div>
+          <h3>Software Trainee</h3>
+          <div class="co">IOanyT Innovations · AWS serverless</div>
+          <ul>
+            <li>Built serverless REST APIs on AWS Lambda and API Gateway with DynamoDB and SES/SNS notifications. The auto-scaling design cut infrastructure cost by about <span class="num">30%</span> compared with always-on servers.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="sec-head"><span class="label">Case files</span><h2>Selected work</h2></div>
+    <div class="cases">
+      <article class="case">
+        <span class="label">Airtel · Architecture</span>
+        <h3>Configurable workflow orchestration engine</h3>
+        <p>A reusable engine that models request tasks, states, events, actions and mapper actions, with Jolt transformations for data mapping. New workflows are configured, not coded, using the Strategy, Factory and Chain of Responsibility patterns.</p>
+        <div class="tags"><span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">GoF patterns</span><span class="tag">Jolt</span></div>
+        <div class="result"><div>Reused across 4+ product lines</div><div>60% faster new-workflow setup</div></div>
+      </article>
+      <article class="case">
+        <span class="label">Airtel · Data</span>
+        <h3>Oracle RAC to PostgreSQL migration</h3>
+        <p>Moved a live production platform off Oracle RAC. I refactored over 100 SQL queries, validated data consistency end to end and planned the cutover so customers never noticed.</p>
+        <div class="tags"><span class="tag">PostgreSQL</span><span class="tag">Oracle RAC</span><span class="tag">SQL tuning</span></div>
+        <div class="result"><div>Zero data loss</div><div>No customer-facing downtime</div></div>
+      </article>
+      <article class="case">
+        <span class="label">Airtel · Performance</span>
+        <h3>Latency and throughput tuning</h3>
+        <p>Profiled hot APIs and fixed them layer by layer: indexes and query plans, Redis caching, Kafka and RabbitMQ consumer settings, and connection pooling, until customer SLAs were met.</p>
+        <div class="tags"><span class="tag">Redis</span><span class="tag">Kafka</span><span class="tag">RabbitMQ</span><span class="tag">Profiling</span></div>
+        <div class="result"><div>p95: ~800 ms → ~600 ms</div><div>Throughput: ~250 → ~300 req/s</div></div>
+      </article>
+      <article class="case">
+        <span class="label">Personal project · In progress</span>
+        <h3>AI Document Assistant (RAG)</h3>
+        <p>A Spring Boot and Spring AI service that answers questions about uploaded PDFs with source citations. It chunks documents, stores embeddings in PGVector and uses prompt templates, all behind REST APIs in Docker.</p>
+        <div class="tags"><span class="tag">Spring AI</span><span class="tag">PGVector</span><span class="tag">RAG</span><span class="tag">Docker</span></div>
+        <div class="result"><div>~85% accuracy on a 50-question test set</div><div>Query latency ~2.5 s → ~1.7 s with HNSW + Redis</div><div>&lt;100 ms vector search over 10K+ chunks</div></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="sec-head"><span class="label">Dependencies</span><h2>Skills</h2></div>
+    <div class="manifest">
+      <div class="group"><h3>Languages &amp; frameworks</h3><div class="tags"><span class="tag">Java 8+</span><span class="tag">Spring Boot</span><span class="tag">Spring MVC</span><span class="tag">Spring Security</span><span class="tag">Hibernate / JPA</span><span class="tag">Spring AI</span><span class="tag">Multithreading</span><span class="tag">Streams</span></div></div>
+      <div class="group"><h3>Databases</h3><div class="tags"><span class="tag">PostgreSQL</span><span class="tag">Oracle RAC</span><span class="tag">MySQL</span><span class="tag">MongoDB</span><span class="tag">DynamoDB</span><span class="tag">Redis</span><span class="tag">Query tuning</span><span class="tag">Migration</span></div></div>
+      <div class="group"><h3>Architecture</h3><div class="tags"><span class="tag">Microservices</span><span class="tag">REST API design</span><span class="tag">Event-driven</span><span class="tag">Kafka</span><span class="tag">RabbitMQ</span><span class="tag">Caching</span><span class="tag">Workflow orchestration</span></div></div>
+      <div class="group"><h3>Testing &amp; monitoring</h3><div class="tags"><span class="tag">JUnit</span><span class="tag">Mockito</span><span class="tag">SonarQube</span><span class="tag">Coverity</span><span class="tag">Black Duck</span><span class="tag">Grafana</span><span class="tag">Postman</span></div></div>
+      <div class="group"><h3>Cloud, CI/CD &amp; security</h3><div class="tags"><span class="tag">AWS Lambda</span><span class="tag">API Gateway</span><span class="tag">Docker</span><span class="tag">Jenkins</span><span class="tag">Maven</span><span class="tag">Gradle</span><span class="tag">Keycloak</span><span class="tag">OAuth2</span><span class="tag">Vault</span><span class="tag">Consul</span></div></div>
+      <div class="group"><h3>AI &amp; practices</h3><div class="tags"><span class="tag">RAG</span><span class="tag">Embeddings</span><span class="tag">Prompt engineering</span><span class="tag">Cursor</span><span class="tag">Copilot</span><span class="tag">HLD / LLD</span><span class="tag">SOLID</span><span class="tag">DSA</span><span class="tag">Agile</span></div></div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="sec-head"><span class="label">Credentials</span><h2>Education &amp; certifications</h2></div>
+    <div class="creds">
+      <div>
+        <span class="label">Education</span>
+        <h3>Master of Computer Applications (MCA)</h3>
+        <ul>
+          <li><span>J.C. Bose University (YMCA), Faridabad</span><span>2018 – 2021</span></li>
+          <li><span>CGPA</span><span>8.31</span></li>
+        </ul>
+      </div>
+      <div>
+        <span class="label">Certifications</span>
+        <ul>
+          <li><span>Java</span><span>HackerRank</span></li>
+          <li><span>SQL</span><span>HackerRank</span></li>
+          <li><span>Problem Solving</span><span>HackerRank</span></li>
+          <li><span>Internet of Things</span><span>NPTEL</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div>
+      <h2>Let's talk.</h2>
+      <p>I'm looking for Senior Java Backend roles where performance, reliability and good design matter. Email is the fastest way to reach me.</p>
+    </div>
+    <div class="lines">
+      <div class="line-item"><span id="email">rashmirwt5@gmail.com</span><button class="copy" type="button" id="copy-email" data-target="email">Copy</button></div>
+      <div class="line-item"><span id="phone">+91 72890 15494</span><button class="copy" type="button" id="copy-phone" data-target="phone">Copy</button></div>
+      <div class="line-item"><a href="https://www.linkedin.com/in/rashmi-rawat-2155611a5/" target="_blank" rel="noopener">linkedin.com/in/rashmi-rawat</a><span>↗</span></div>
+      <div class="line-item"><a href="https://leetcode.com/u/Rashmi_Rawat/" target="_blank" rel="noopener">leetcode.com/u/Rashmi_Rawat</a><span>↗</span></div>
+    </div>
+  </section>
+
+  <footer><span>© 2026 Rashmi Rawat</span><span>Java · Spring Boot · Microservices</span></footer>
+</main>
+
+<script>
+document.querySelectorAll('.copy').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var el = document.getElementById(btn.dataset.target);
+    var text = el.textContent.trim();
+    function done(){ btn.textContent = 'Copied'; setTimeout(function(){ btn.textContent = 'Copy'; }, 1600); }
+    function select(){ var r = document.createRange(); r.selectNodeContents(el); var s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = 'Selected'; setTimeout(function(){ btn.textContent = 'Copy'; }, 1600); }
+    try { navigator.clipboard.writeText(text).then(done, select); } catch(e){ select(); }
+  });
+});
+</script>
+
+</body>
+</html>
